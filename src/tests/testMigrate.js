@@ -1,6 +1,10 @@
 const sequelize = require('../utils/connection');
 
-require('../models')
+require('../models/Actor');
+require('../models/Director');
+require('../models/Genre');
+require('../models/Movie');
+require('../models');
 
 const main = async() => {
     try{
