@@ -1,5 +1,6 @@
 const request = require('supertest');
 const app = require('../app');
+require('../models')
 
 let actorId;
 
@@ -19,9 +20,9 @@ test('/POST /actors codigo 201 y id definido', async () => {
 
 test('/GET /actors codigo 200 y length de 1', async () => {
     const res = await request(app).get('/actors');
-    console.log(res.body);
     expect(res.status).toBe(200);
     expect(res.body).toHaveLength(1);
+    expect(res.body[0].movies).toBeDefined();
 });
 
 test('/PUT /actors/:id codigo 200 y lo actualizado sea correspondiente', async () => {
