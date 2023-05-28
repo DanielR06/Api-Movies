@@ -1,5 +1,6 @@
 const request = require('supertest');
 const app = require('../app');
+require('../models');
 
 let genreId;
 
@@ -17,6 +18,7 @@ test('/GET /genres codigo 200 y traiga 1', async () => {
     const res = await request(app).get('/genres');
     expect(res.status).toBe(200);
     expect(res.body).toHaveLength(1);
+    expect(res.body[0].movies).toBeDefined();
 });
 
 test('/PUT /genres/:id codigo 200 y el nombre actualizado sea el correcto', async () => {

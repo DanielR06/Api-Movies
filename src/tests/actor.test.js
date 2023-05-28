@@ -18,7 +18,7 @@ test('/POST /actors codigo 201 y id definido', async () => {
     expect(res.body.id).toBeDefined();
 });
 
-test('/GET /actors codigo 200 y length de 1', async () => {
+test('/GET /actors codigo 200 y length de 1',async () => {
     const res = await request(app).get('/actors');
     expect(res.status).toBe(200);
     expect(res.body).toHaveLength(1);

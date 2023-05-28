@@ -1,5 +1,6 @@
 const request = require('supertest');
 const app = require('../app');
+require('../models');
 
 let directorId;
 
@@ -21,6 +22,7 @@ test('/GET /directors codigo 200 y que solo haya 1', async () => {
     const res = await request(app).get('/directors');
     expect(res.status).toBe(200);
     expect(res.body).toHaveLength(1);
+    expect(res.body[0].movies).toBeDefined();
 });
 
 test('/PUT /directors/:id codigo 200 y lo actualizado sea correspondiente', async () => {
